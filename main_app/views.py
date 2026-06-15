@@ -43,4 +43,24 @@ def home(request):
         'crops_list': all_crops  # വിവരങ്ങൾ HTML-ലേക്ക് അയക്കാൻ വേണ്ടി ഒരു ഡിക്‌ഷണറി ബാഗിലാക്കുന്നു
     }
 
-    return render(request, 'index.html', context)  # ഡാറ്റയും ചേർത്ത് index.html ലോഡ് ചെയ്യുന്നു
+    return render(request, 'index.html', context)
+
+
+from django.shortcuts import render, redirect
+from .models import Crop
+from .forms import CropForm  # നമ്മൾ ഇപ്പോൾ ഉണ്ടാക്കിയ CropForm ഇങ്ങോട്ട് കൊണ്ടുവരുന്നു
+from django.contrib.auth.decorators import login_required  # ലോഗിൻ ചെയ്തവർക്ക് മാത്രം ഈ പേജ് കൊടുക്കാൻ ഉള്ള ടൂൾ
+
+
+@login_required  # 👈 ജാംഗോയുടെ ഇൻ-ബിൽറ്റ് സെക്യൂരിറ്റി ടൂൾ (ലോഗിൻ ചെയ്യാത്തവർ ഈ ലിങ്ക് അടിച്ചാൽ നേരെ ലോഗിൻ പേജിലേക്ക് പോകും)
+def add_crop_view(request):
+    if request.method == 'POST':
+        form = CropForm(request.POST)  # കർഷകൻ ഫോമിൽ ടൈപ്പ് ചെയ്ത ഡാറ്റ എടുക്കുന്നു
+        if form.is_valid():
+            form.save()  # ഡാറ്റാബേസിലേക്ക് പുതിയ വിള സേവ് ചെയ്യുന്നു!
+            return redirect('home')  # സേവ് ആയിക്കഴിഞ്ഞാൽ നേരെ ഹോം പേജിലേക്ക് വിടുന്നു
+    else:
+        form = CropForm()  # വെറുതെ പേജ് ഓപ്പൺ ചെയ്യുമ്പോൾ ഒഴിഞ്ഞ ഫോം കാണിക്കുന്നു
+
+    return render(request, 'add_crop.html', {'form_bag': form})
+# ഡാറ്റയും ചേർത്ത് index.html ലോഡ് ചെയ്യുന്നു
