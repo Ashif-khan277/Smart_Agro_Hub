@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-f(+cri+6uowcz6d*xnc$clf837kil@rbwfg^dh5$r0-eiz961d
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ashif.pythonanywhere.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -120,3 +120,5 @@ STATIC_URL = 'static/'
 LOGIN_REDIRECT_URL = '/' # login vijayichal nere home page-lekku (index.html) pogaan parayunnu
 LOGOUT_REDIRECT_URL = '/' # logout aayi kazhinjalum home page-lekku thirich vidaan parayunnu
 # ivide nnamal Django-gku login-u shesham ulla vazhi set aaki
+import os
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
