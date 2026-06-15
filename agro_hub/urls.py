@@ -19,5 +19,6 @@ from django.urls import path, include # include koodi ivide add cheythu
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('main_app.urls')), # main_app-ile urls-ne ivide link cheythu
+    path('', include('main_app.urls')),
+    path('accounts/', include('accounts.urls')),# main_app-ile urls-ne ivide link cheythu
 ]

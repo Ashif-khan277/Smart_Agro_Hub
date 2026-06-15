@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register - Smart Agro Hub</title>
+</head>
+<body>
+    <div style="max-width: 400px; margin: 80px auto; padding: 20px; border: 1px solid #2e7d32; border-radius: 8px; font-family: Arial, sans-serif;">
+        <h2 style="color: #2e7d32; text-align: center;">Farmer Registration</h2>
+
+        <form method="POST" action="">
+            {% csrf_token %} <div style="margin-bottom: 15px;">
+                {{ form_bag.as_p }} </div>
+
+            <button type="submit" style="width: 100%; padding: 10px; background-color: #2e7d32; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">Register</button>
+        </form>
+    </div>
+</body>
+</html>

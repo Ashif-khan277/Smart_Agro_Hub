@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main_app',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -116,3 +117,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+LOGIN_REDIRECT_URL = '/' # login vijayichal nere home page-lekku (index.html) pogaan parayunnu
+LOGOUT_REDIRECT_URL = '/' # logout aayi kazhinjalum home page-lekku thirich vidaan parayunnu
+# ivide nnamal Django-gku login-u shesham ulla vazhi set aaki
